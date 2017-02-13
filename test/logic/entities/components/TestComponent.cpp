@@ -16,6 +16,6 @@ TestComponent::~TestComponent() {
 	// TODO Auto-generated destructor stub
 }
 
-void TestComponent::update(const long millis) {
+void TestComponent::update(const float millis) {
 	std::cout << "Update method: " << millis << std::endl;
 }

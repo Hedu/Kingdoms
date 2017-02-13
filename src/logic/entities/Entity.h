@@ -17,7 +17,7 @@ public:
 	Entity();
 	virtual ~Entity();
 
-	void update(const long millis);
+	void update(const float millis);
 	void addComponent(Component *);
 	void removeComponent(Component *);
 

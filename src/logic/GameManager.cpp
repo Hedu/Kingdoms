@@ -16,7 +16,7 @@ GameManager *GameManager::getInstance(){
 	return _gameManager;
 }
 
-void GameManager::update(const long millis ) {
+void GameManager::update(const float millis ) {
 	std::list<Entity *>::iterator it = _entities.begin();
 	while (it != _entities.end()) {
 		(*it++)->update(millis);

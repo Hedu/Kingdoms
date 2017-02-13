@@ -12,14 +12,16 @@
 #include <ctime>
 #include <iostream>
 
-long getCurrentMillis() {
-	return (long)std::clock()* 1000/CLOCKS_PER_SEC;
+#define MILLIS_PER_FRAME (float)1000/60
+
+float getCurrentMillis() {
+	return (float)std::clock()* 1000/CLOCKS_PER_SEC;
 }
 
 int main() {
 
-	long previousTime = getCurrentMillis();
-	long diff = previousTime;
+	float previousTime = getCurrentMillis();
+	float diff = previousTime;
 
 	GameManager *gm = GameManager::getInstance();
 	Entity *e = new Entity();
@@ -30,7 +32,7 @@ int main() {
 
 	while (true) {
 		diff = getCurrentMillis() - previousTime;
-		if (diff > 16) {
+		if (diff > MILLIS_PER_FRAME) {
 			gm->update(diff);
 			previousTime = getCurrentMillis();
 		}

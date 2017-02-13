@@ -10,7 +10,7 @@
 Entity::Entity() {
 }
 
-void Entity::update(const long millis) {
+void Entity::update(const float millis) {
 	std::list<Component *>::iterator it = _components.begin();
 	while (it != _components.end()) {
 		(*it++)->update(millis);

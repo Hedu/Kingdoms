@@ -16,7 +16,7 @@ class TestComponent: public Component {
 public:
 	TestComponent();
 	virtual ~TestComponent();
-	void update(const long millis);
+	void update(const float millis);
 };
 
 #endif /* LOGIC_ENTITIES_COMPONENTS_TESTCOMPONENT_H_ */

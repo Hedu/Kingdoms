@@ -17,7 +17,7 @@ class GameManager {
 public:
 	static GameManager *getInstance();
 	virtual ~GameManager();
-	void update(const long);
+	void update(const float);
 	void addEntity(Entity *);
 	void removeEntity(Entity *);
 private:
