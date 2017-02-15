@@ -7,8 +7,8 @@
 
 #include "Entity.h"
 
-Entity::Entity() {
-}
+Entity::Entity(const Vector3 &position, const Vector3 &orientation):
+	_position(position), _orientation(orientation){}
 
 void Entity::update(const float millis) {
 	std::list<Component *>::iterator it = _components.begin();
