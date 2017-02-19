@@ -12,14 +12,17 @@
 #include <ctime>
 #include <iostream>
 
+//fakeMain includes
+#include <map>
+#include <string>
+
 #define MILLIS_PER_FRAME (float)1000/60
 
 float getCurrentMillis() {
 	return (float)std::clock()* 1000/CLOCKS_PER_SEC;
 }
 
-int main() {
-
+void realMain() {
 	float previousTime = getCurrentMillis();
 	float diff = previousTime;
 
@@ -37,9 +40,21 @@ int main() {
 			previousTime = getCurrentMillis();
 		}
 	}
-
-	return 0;
 }
 
+void fakeMain() {
+	std::map<std::string, std::string*> mapa;
+	std::string *str = new std::string("adios");
+	//mapa["hola"] = "adios";
+	mapa["hola"] = str;
+	//mapa.insert("hola", "Radios");
+	std::cout << *(mapa.at("hola")) << std::endl;
+	std::cout << mapa["adios"] << std::endl;
+}
 
+int main() {
 
+	//realMain();
+	fakeMain();
+	return 0;
+}
