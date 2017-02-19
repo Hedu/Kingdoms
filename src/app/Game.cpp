@@ -13,8 +13,7 @@
 #include <iostream>
 
 //fakeMain includes
-#include <map>
-#include <string>
+#include "Application.h"
 
 #define MILLIS_PER_FRAME (float)1000/60
 
@@ -43,13 +42,8 @@ void realMain() {
 }
 
 void fakeMain() {
-	std::map<std::string, std::string*> mapa;
-	std::string *str = new std::string("adios");
-	//mapa["hola"] = "adios";
-	mapa["hola"] = str;
-	//mapa.insert("hola", "Radios");
-	std::cout << *(mapa.at("hola")) << std::endl;
-	std::cout << mapa["adios"] << std::endl;
+	Application app;
+	app.go();
 }
 
 int main() {
