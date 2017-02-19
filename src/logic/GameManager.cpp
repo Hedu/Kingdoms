@@ -34,8 +34,8 @@ void GameManager::removeEntity(Entity *e) {
 GameManager::~GameManager() {
 	if (!_entities.empty()) {
 		std::list<Entity *>::iterator it = _entities.begin();
-		while (it++ != _entities.end()) {
-			delete (*it);
+		while (it != _entities.end()) {
+			delete (*it++);
 		}
 	}
 	if (_gameManager) {

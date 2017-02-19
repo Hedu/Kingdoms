@@ -28,8 +28,8 @@ void Entity::removeComponent(Component *c) {
 Entity::~Entity() {
 	if (!_components.empty()) {
 		std::list<Component *>::iterator it = _components.begin();
-		while (it++ != _components.end()) {
-			delete (*it);
+		while (it != _components.end()) {
+			delete (*it++);
 		}
 	}
 }
