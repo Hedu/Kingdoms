@@ -9,15 +9,11 @@
 //-------------------------------------------------------------------------------------
 Application::Application(void)
     : mRoot(0),
-    mCamera(0),
-    mSceneMgr(0),
     mWindow(0),
     mResourcesCfg(Ogre::StringUtil::BLANK),
     mPluginsCfg(Ogre::StringUtil::BLANK),
     mTrayMgr(0),
-    mCameraMan(0),
     mDetailsPanel(0),
-    mCursorWasVisible(false),
     mShutDown(false)
 {
 }
@@ -26,7 +22,6 @@ Application::Application(void)
 Application::~Application(void)
 {
     if (mTrayMgr) delete mTrayMgr;
-    if (mCameraMan) delete mCameraMan;
 
     //Remove ourself as a Window listener
     Ogre::WindowEventUtilities::removeWindowEventListener(mWindow, this);
@@ -52,20 +47,6 @@ bool Application::configure(void)
     {
         return false;
     }
-}
-//-------------------------------------------------------------------------------------
-void Application::createCamera(void)
-{
-    // Create the camera
-    mCamera = mSceneMgr->createCamera("PlayerCam");
-
-    // Position it at 500 in Z direction
-    mCamera->setPosition(Ogre::Vector3(0,0,80));
-    // Look back along -Z
-    mCamera->lookAt(Ogre::Vector3(0,0,-300));
-    mCamera->setNearClipDistance(5);
-
-    mCameraMan = new OgreBites::SdkCameraMan(mCamera);   // create a default camera controller
 }
 //-------------------------------------------------------------------------------------
 void Application::createFrameListener(void)
@@ -105,52 +86,8 @@ void Application::createFrameListener(void)
     mRoot->addFrameListener(this);
 }
 //-------------------------------------------------------------------------------------
-void Application::createScene()
-{
-	mCamera->setPosition(Ogre::Vector3(1683, 50, 2116));
-	mCamera->lookAt(Ogre::Vector3(1963, 50, 1660));
-	mCamera->setNearClipDistance(0.1);
-
-	bool infiniteClip =
-	  mRoot->getRenderSystem()->getCapabilities()->hasCapability(
-	    Ogre::RSC_INFINITE_FAR_PLANE);
-
-	if (infiniteClip)
-	  mCamera->setFarClipDistance(0);
-	else
-	  mCamera->setFarClipDistance(50000);
-
-	mSceneMgr->setAmbientLight(Ogre::ColourValue(0.2, 0.2, 0.2));
-
-	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
-	lightdir.normalise();
-
-	Ogre::Light* light = mSceneMgr->createLight("TestLight");
-	light->setType(Ogre::Light::LT_DIRECTIONAL);
-	light->setDirection(lightdir);
-	light->setDiffuseColour(Ogre::ColourValue::White);
-	light->setSpecularColour(Ogre::ColourValue(0.4, 0.4, 0.4));
-
-
-	mSceneMgr->setSkyBox(true, "Examples/SpaceSkyBox", 300, false);
-	mSceneMgr->setSkyDome(true, "Examples/CloudySky", 5, 8);
-
-}
-
-//-------------------------------------------------------------------------------------
 void Application::destroyScene(void)
 {
-}
-//-------------------------------------------------------------------------------------
-void Application::createViewports(void)
-{
-    // Create one viewport, entire window
-    Ogre::Viewport* vp = mWindow->addViewport(mCamera);
-    vp->setBackgroundColour(Ogre::ColourValue(0,0,0));
-
-    // Alter the camera aspect ratio to match the viewport
-    mCamera->setAspectRatio(
-        Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
 }
 //-------------------------------------------------------------------------------------
 void Application::setupResources(void)
@@ -216,10 +153,6 @@ bool Application::setup(void)
     bool carryOn = configure();
     if (!carryOn) return false;
 
-    mSceneMgr = mRoot->createSceneManager(Ogre::ST_GENERIC);
-    createCamera();
-    createViewports();
-
     // Set default mipmap level (NB some APIs ignore this)
     Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(5);
 
@@ -227,9 +160,6 @@ bool Application::setup(void)
     createResourceListener();
     // Load resources
     loadResources();
-
-    // Create the scene
-    createScene();
 
     createFrameListener();
 
@@ -252,16 +182,17 @@ bool Application::frameRenderingQueued(const Ogre::FrameEvent& evt)
 
     if (!mTrayMgr->isDialogVisible())
     {
-        mCameraMan->frameRenderingQueued(evt);   // if dialog isn't up, then update the camera
+    	GraphicManager::getInstance()->getActiveScene()->_cameraMan->frameRenderingQueued(evt);   // if dialog isn't up, then update the camera
         if (mDetailsPanel->isVisible())   // if details panel is visible, then update its contents
         {
-            mDetailsPanel->setParamValue(0, Ogre::StringConverter::toString(mCamera->getDerivedPosition().x));
-            mDetailsPanel->setParamValue(1, Ogre::StringConverter::toString(mCamera->getDerivedPosition().y));
-            mDetailsPanel->setParamValue(2, Ogre::StringConverter::toString(mCamera->getDerivedPosition().z));
-            mDetailsPanel->setParamValue(4, Ogre::StringConverter::toString(mCamera->getDerivedOrientation().w));
-            mDetailsPanel->setParamValue(5, Ogre::StringConverter::toString(mCamera->getDerivedOrientation().x));
-            mDetailsPanel->setParamValue(6, Ogre::StringConverter::toString(mCamera->getDerivedOrientation().y));
-            mDetailsPanel->setParamValue(7, Ogre::StringConverter::toString(mCamera->getDerivedOrientation().z));
+        	Ogre::Camera* cam = GraphicManager::getInstance()->getActiveScene()->_camera;
+            mDetailsPanel->setParamValue(0, Ogre::StringConverter::toString(cam->getDerivedPosition().x));
+            mDetailsPanel->setParamValue(1, Ogre::StringConverter::toString(cam->getDerivedPosition().y));
+            mDetailsPanel->setParamValue(2, Ogre::StringConverter::toString(cam->getDerivedPosition().z));
+            mDetailsPanel->setParamValue(4, Ogre::StringConverter::toString(cam->getDerivedOrientation().w));
+            mDetailsPanel->setParamValue(5, Ogre::StringConverter::toString(cam->getDerivedOrientation().x));
+            mDetailsPanel->setParamValue(6, Ogre::StringConverter::toString(cam->getDerivedOrientation().y));
+            mDetailsPanel->setParamValue(7, Ogre::StringConverter::toString(cam->getDerivedOrientation().z));
         }
     }
 

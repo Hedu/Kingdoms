@@ -8,18 +8,16 @@
 #define __Application_h_
 
 #include "InputManager.h"
+#include "../graphics/GraphicManager.h"
+#include "../graphics/Scene.h"
 
-#include <OgreCamera.h>
 #include <OgreEntity.h>
 #include <OgreLogManager.h>
 #include <OgreRoot.h>
-#include <OgreViewport.h>
-#include <OgreSceneManager.h>
 #include <OgreRenderWindow.h>
 #include <OgreConfigFile.h>
 
 #include <SdkTrays.h>
-#include <SdkCameraMan.h>
 
 class Application : public Ogre::FrameListener, public Ogre::WindowEventListener, OgreBites::SdkTrayListener
 {
@@ -32,11 +30,8 @@ public:
 protected:
     virtual bool setup();
     virtual bool configure(void);
-    virtual void createCamera(void);
     virtual void createFrameListener(void);
-    virtual void createScene(void);
     virtual void destroyScene(void);
-    virtual void createViewports(void);
     virtual void setupResources(void);
     virtual void createResourceListener(void);
     virtual void loadResources(void);
@@ -50,8 +45,7 @@ protected:
     //Unattach OIS before window shutdown (very important under Linux)
     virtual void windowClosed(Ogre::RenderWindow* rw);
 
-    Ogre::Camera* mCamera;
-	Ogre::SceneManager* mSceneMgr;
+
 	Ogre::Root *mRoot;
     Ogre::RenderWindow* mWindow;
     Ogre::String mResourcesCfg;
@@ -59,9 +53,7 @@ protected:
 
     // OgreBites
     OgreBites::SdkTrayManager* mTrayMgr;
-    OgreBites::SdkCameraMan* mCameraMan;     // basic camera controller
     OgreBites::ParamsPanel* mDetailsPanel;   // sample details panel
-    bool mCursorWasVisible;                  // was cursor visible before dialog appeared
     bool mShutDown;
 
     kingdoms::InputManager* _inputManager;
