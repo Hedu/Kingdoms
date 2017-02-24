@@ -13,6 +13,12 @@
 
 #include <list>
 
+namespace kingdoms{
+	class Message;
+}
+
+typedef kingdoms::Message Message;
+
 class Entity {
 public:
 	Entity(const Vector3 & = Vector3::ZERO, const Vector3 & = Vector3::ZERO);
@@ -39,6 +45,8 @@ public:
 	void setPosition(const Vector3& position) {
 		this->_position = position;
 	}
+
+	void processMessage(Message *);
 
 private:
 	std::list<Component *> _components;

@@ -32,6 +32,8 @@ void realMain() {
 	e->addComponent(cp);
 	gm->addEntity(e);
 
+	gm->broadcastMessage(new Message(NULL));
+
 	while (true) {
 		diff = getCurrentMillis() - previousTime;
 		if (diff > MILLIS_PER_FRAME) {
@@ -48,7 +50,7 @@ void fakeMain() {
 
 int main() {
 
-	//realMain();
-	fakeMain();
+	realMain();
+	//fakeMain();
 	return 0;
 }

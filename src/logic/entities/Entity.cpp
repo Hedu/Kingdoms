@@ -25,6 +25,13 @@ void Entity::removeComponent(Component *c) {
 	_components.remove(c);
 }
 
+void Entity::processMessage(Message *message) {
+	std::list<Component *>::iterator it = _components.begin();
+	while (it != _components.end()) {
+		(*it++)->processMessage(message);
+	}
+}
+
 Entity::~Entity() {
 	if (!_components.empty()) {
 		std::list<Component *>::iterator it = _components.begin();
