@@ -23,11 +23,15 @@ public:
 	InputManager(Ogre::RenderWindow*);
 	virtual ~InputManager();
 
-	//OIS Input devices
-	OIS::InputManager* _oisInputManager;
-	OIS::Mouse* _mouse;
-	OIS::Keyboard* _keyboard;
-
+	OIS::InputManager* getOisInputManager() {
+		return _oisInputManager;
+	}
+	OIS::Mouse* getMouse() {
+		return _mouse;
+	}
+	OIS::Keyboard* getKeyboard() {
+		return _keyboard;
+	}
 private:
 	// OIS::KeyListener
 	virtual bool keyPressed(const OIS::KeyEvent &arg);
@@ -39,6 +43,10 @@ private:
 	virtual bool mouseReleased(const OIS::MouseEvent &arg,
 			OIS::MouseButtonID id);
 
+	//OIS Input devices
+	OIS::InputManager* _oisInputManager;
+	OIS::Mouse* _mouse;
+	OIS::Keyboard* _keyboard;
 };
 
 } /* namespace kingdoms */

@@ -50,7 +50,7 @@ void Application::createFrameListener(void) {
 	Ogre::WindowEventUtilities::addWindowEventListener(mWindow, this);
 
 	mTrayMgr = new OgreBites::SdkTrayManager("InterfaceName", mWindow,
-			_inputManager->_mouse, this);
+			_inputManager->getMouse(), this);
 	mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT);
 	mTrayMgr->showLogo(OgreBites::TL_BOTTOMRIGHT);
 	mTrayMgr->hideCursor();
@@ -160,8 +160,8 @@ bool Application::frameRenderingQueued(const Ogre::FrameEvent& evt) {
 		return false;
 
 	//Need to capture/update each device
-	_inputManager->_keyboard->capture();
-	_inputManager->_mouse->capture();
+	_inputManager->getKeyboard()->capture();
+	_inputManager->getMouse()->capture();
 
 	mTrayMgr->frameRenderingQueued(evt);
 
@@ -205,7 +205,7 @@ void Application::windowResized(Ogre::RenderWindow* rw) {
 	int left, top;
 	rw->getMetrics(width, height, depth, left, top);
 
-	const OIS::MouseState &ms = _inputManager->_mouse->getMouseState();
+	const OIS::MouseState &ms = _inputManager->getMouse()->getMouseState();
 	ms.width = width;
 	ms.height = height;
 }
