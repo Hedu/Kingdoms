@@ -9,7 +9,8 @@
 
 namespace kingdoms {
 
-Message::Message(Entity *entity): _origin(entity) {
+Message::Message(Entity *entity) :
+		_origin(entity) {
 	// TODO Auto-generated constructor stub
 
 }

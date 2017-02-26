@@ -9,7 +9,7 @@
 
 GraphicManager *GraphicManager::_graphicManager = NULL;
 
-GraphicManager *GraphicManager::getInstance(){
+GraphicManager *GraphicManager::getInstance() {
 	if (_graphicManager == NULL) {
 		_graphicManager = new GraphicManager();
 	}
@@ -25,13 +25,12 @@ Scene* GraphicManager::setActiveScene(std::string name) {
 		Scene *scene = _scenes.at(name);
 		_activeScene = scene;
 		return scene;
-	}
-	else {
+	} else {
 		return NULL;
 	}
 }
 
-void GraphicManager::addScene(std::string name, Scene *scene ) {
+void GraphicManager::addScene(std::string name, Scene *scene) {
 	removeScene(name);
 	if (_scenes.empty()) {
 		_activeScene = scene;

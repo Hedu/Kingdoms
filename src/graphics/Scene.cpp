@@ -13,19 +13,20 @@ Scene::Scene(Ogre::Root *mRoot, Ogre::RenderWindow* mWindow) {
 	_camera = _sceneMgr->createCamera("PlayerCam");
 
 	// Position it at 500 in Z direction
-	_camera->setPosition(Ogre::Vector3(0,0,80));
+	_camera->setPosition(Ogre::Vector3(0, 0, 80));
 	// Look back along -Z
-	_camera->lookAt(Ogre::Vector3(0,0,-300));
+	_camera->lookAt(Ogre::Vector3(0, 0, -300));
 	_camera->setNearClipDistance(5);
 
-	_cameraMan = new OgreBites::SdkCameraMan(_camera);   // create a default camera controller
+	_cameraMan = new OgreBites::SdkCameraMan(_camera); // create a default camera controller
 
 	Ogre::Viewport* vp = mWindow->addViewport(_camera);
-	vp->setBackgroundColour(Ogre::ColourValue(0,0,0));
+	vp->setBackgroundColour(Ogre::ColourValue(0, 0, 0));
 
 	// Alter the camera aspect ratio to match the viewport
 	_camera->setAspectRatio(
-		Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
+			Ogre::Real(vp->getActualWidth())
+					/ Ogre::Real(vp->getActualHeight()));
 }
 
 Scene::~Scene() {

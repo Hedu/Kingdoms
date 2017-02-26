@@ -8,6 +8,8 @@
 #ifndef GRAPHICS_GRAPHICMANAGER_H_
 #define GRAPHICS_GRAPHICMANAGER_H_
 
+#include "../utils/Vector3.h"
+
 #include <iostream>
 #include <map>
 #include <string>
@@ -23,6 +25,8 @@ public:
 	Scene* setActiveScene(std::string);
 	void addScene(std::string, Scene*);
 	void removeScene(std::string);
+	void addMesh(Vector3 position, std::string mesh);
+	void removeMesh(std::string mesh);
 private:
 	GraphicManager();
 

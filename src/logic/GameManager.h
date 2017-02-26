@@ -39,5 +39,4 @@ private:
 	std::map<Message *, Entity *> _messages;
 };
 
-
 #endif /* LOGIC_GAMEMANAGER_H_ */

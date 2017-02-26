@@ -17,7 +17,8 @@ public:
 	TestComponent();
 	virtual ~TestComponent();
 	void update(const float millis);
-	virtual void processMessage(const Message *){}
+	virtual void processMessage(const Message *) {
+	}
 };
 
 #endif /* LOGIC_ENTITIES_COMPONENTS_TESTCOMPONENT_H_ */

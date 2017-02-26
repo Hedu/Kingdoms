@@ -25,6 +25,21 @@ public:
 	Scene(Ogre::Root *, Ogre::RenderWindow*);
 	virtual ~Scene();
 
+	Ogre::Camera* getCamera() {
+		return _camera;
+	}
+
+	Ogre::SceneManager* getSceneManager() {
+		return _sceneMgr;
+	}
+
+	OgreBites::SdkCameraMan* getCameraMan() {
+		return _cameraMan;
+	}
+
+private:
+
+	std::map<std::string, Ogre::Entity*> _entities;
 	Ogre::Camera* _camera;
 	Ogre::SceneManager* _sceneMgr;
 	OgreBites::SdkCameraMan* _cameraMan;     // basic camera controller

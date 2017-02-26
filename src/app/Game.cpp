@@ -18,7 +18,7 @@
 #define MILLIS_PER_FRAME (float)1000/60
 
 float getCurrentMillis() {
-	return (float)std::clock()* 1000/CLOCKS_PER_SEC;
+	return (float) std::clock() * 1000 / CLOCKS_PER_SEC;
 }
 
 void realMain() {

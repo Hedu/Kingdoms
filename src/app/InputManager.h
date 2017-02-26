@@ -18,7 +18,7 @@
 
 namespace kingdoms {
 
-class InputManager : public OIS::KeyListener, public OIS::MouseListener {
+class InputManager: public OIS::KeyListener, public OIS::MouseListener {
 public:
 	InputManager(Ogre::RenderWindow*);
 	virtual ~InputManager();
@@ -30,12 +30,14 @@ public:
 
 private:
 	// OIS::KeyListener
-	virtual bool keyPressed( const OIS::KeyEvent &arg );
-	virtual bool keyReleased( const OIS::KeyEvent &arg );
+	virtual bool keyPressed(const OIS::KeyEvent &arg);
+	virtual bool keyReleased(const OIS::KeyEvent &arg);
 	// OIS::MouseListener
-	virtual bool mouseMoved( const OIS::MouseEvent &arg );
-	virtual bool mousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id );
-	virtual bool mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id );
+	virtual bool mouseMoved(const OIS::MouseEvent &arg);
+	virtual bool mousePressed(const OIS::MouseEvent &arg,
+			OIS::MouseButtonID id);
+	virtual bool mouseReleased(const OIS::MouseEvent &arg,
+			OIS::MouseButtonID id);
 
 };
 

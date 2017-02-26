@@ -9,7 +9,7 @@
 #define LOGIC_ENTITIES_COMPONENTS_COMPONENT_H_
 
 namespace kingdoms {
-	class Message;
+class Message;
 }
 
 typedef kingdoms::Message Message;

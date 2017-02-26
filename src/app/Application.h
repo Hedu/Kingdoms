@@ -19,44 +19,44 @@
 
 #include <SdkTrays.h>
 
-class Application : public Ogre::FrameListener, public Ogre::WindowEventListener, OgreBites::SdkTrayListener
-{
+class Application: public Ogre::FrameListener,
+		public Ogre::WindowEventListener,
+		OgreBites::SdkTrayListener {
 public:
-    Application(void);
-    virtual ~Application(void);
+	Application(void);
+	virtual ~Application(void);
 
-    virtual void go(void);
+	virtual void go(void);
 
 protected:
-    virtual bool setup();
-    virtual bool configure(void);
-    virtual void createFrameListener(void);
-    virtual void destroyScene(void);
-    virtual void setupResources(void);
-    virtual void createResourceListener(void);
-    virtual void loadResources(void);
+	virtual bool setup();
+	virtual bool configure(void);
+	virtual void createFrameListener(void);
+	virtual void destroyScene(void);
+	virtual void setupResources(void);
+	virtual void createResourceListener(void);
+	virtual void loadResources(void);
 
-    // Ogre::FrameListener
-    virtual bool frameRenderingQueued(const Ogre::FrameEvent& evt);
+	// Ogre::FrameListener
+	virtual bool frameRenderingQueued(const Ogre::FrameEvent& evt);
 
-    // Ogre::WindowEventListener
-    //Adjust mouse clipping area
-    virtual void windowResized(Ogre::RenderWindow* rw);
-    //Unattach OIS before window shutdown (very important under Linux)
-    virtual void windowClosed(Ogre::RenderWindow* rw);
-
+	// Ogre::WindowEventListener
+	//Adjust mouse clipping area
+	virtual void windowResized(Ogre::RenderWindow* rw);
+	//Unattach OIS before window shutdown (very important under Linux)
+	virtual void windowClosed(Ogre::RenderWindow* rw);
 
 	Ogre::Root *mRoot;
-    Ogre::RenderWindow* mWindow;
-    Ogre::String mResourcesCfg;
-    Ogre::String mPluginsCfg;
+	Ogre::RenderWindow* mWindow;
+	Ogre::String mResourcesCfg;
+	Ogre::String mPluginsCfg;
 
-    // OgreBites
-    OgreBites::SdkTrayManager* mTrayMgr;
-    OgreBites::ParamsPanel* mDetailsPanel;   // sample details panel
-    bool mShutDown;
+	// OgreBites
+	OgreBites::SdkTrayManager* mTrayMgr;
+	OgreBites::ParamsPanel* mDetailsPanel;   // sample details panel
+	bool mShutDown;
 
-    kingdoms::InputManager* _inputManager;
+	kingdoms::InputManager* _inputManager;
 
 };
 

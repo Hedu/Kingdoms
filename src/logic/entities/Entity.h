@@ -13,8 +13,8 @@
 
 #include <list>
 
-namespace kingdoms{
-	class Message;
+namespace kingdoms {
+class Message;
 }
 
 typedef kingdoms::Message Message;

@@ -9,14 +9,14 @@
 
 GameManager *GameManager::_gameManager = NULL;
 
-GameManager *GameManager::getInstance(){
+GameManager *GameManager::getInstance() {
 	if (_gameManager == NULL) {
 		_gameManager = new GameManager();
 	}
 	return _gameManager;
 }
 
-void GameManager::update(const float millis ) {
+void GameManager::update(const float millis) {
 	std::list<Entity *>::iterator it = _entities.begin();
 	while (it != _entities.end()) {
 		(*it++)->update(millis);
@@ -48,8 +48,7 @@ void GameManager::processMessages() {
 			Entity *receiver = (it++)->second;
 			if (receiver == NULL) {
 				processMessage(message);
-			}
-			else {
+			} else {
 				processMessage(message, receiver);
 			}
 			_messages.erase(message);
