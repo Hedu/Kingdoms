@@ -32,7 +32,6 @@ protected:
 	virtual bool setup();
 	virtual bool configure(void);
 	virtual void createFrameListener(void);
-	virtual void destroyScene(void);
 	virtual void setupResources(void);
 	virtual void createResourceListener(void);
 	virtual void loadResources(void);

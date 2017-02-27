@@ -78,9 +78,6 @@ void Application::createFrameListener(void) {
 	mRoot->addFrameListener(this);
 }
 //-------------------------------------------------------------------------------------
-void Application::destroyScene(void) {
-}
-//-------------------------------------------------------------------------------------
 void Application::setupResources(void) {
 	// Load resource paths from config file
 	Ogre::ConfigFile cf;
@@ -125,8 +122,6 @@ void Application::go(void) {
 
 	mRoot->startRendering();
 
-	// clean up
-	destroyScene();
 }
 //-------------------------------------------------------------------------------------
 bool Application::setup(void) {
