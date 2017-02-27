@@ -24,8 +24,8 @@ public:
 	Scene* setActiveScene(std::string);
 	void addScene(std::string, Scene*);
 	void removeScene(std::string);
-	void addMesh(Vector3 position, std::string mesh);
-	void removeMesh(std::string mesh);
+	void addMesh(std::string name, Vector3 position, std::string mesh);
+	void removeMesh(std::string name);
 private:
 	GraphicManager();
 

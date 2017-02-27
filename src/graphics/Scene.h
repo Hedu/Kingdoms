@@ -8,6 +8,8 @@
 #ifndef GRAPHICS_SCENE_H_
 #define GRAPHICS_SCENE_H_
 
+#include "../utils/Vector3.h"
+
 #include <OISEvents.h>
 #include <OISInputManager.h>
 #include <OISKeyboard.h>
@@ -25,21 +27,21 @@ public:
 	Scene(Ogre::Root *, Ogre::RenderWindow*);
 	virtual ~Scene();
 
+	void addMesh(std::string name, Vector3 position, std::string mesh);
+	void removeMesh(std::string name);
 	Ogre::Camera* getCamera() {
 		return _camera;
 	}
-
 	Ogre::SceneManager* getSceneManager() {
 		return _sceneMgr;
 	}
-
 	OgreBites::SdkCameraMan* getCameraMan() {
 		return _cameraMan;
 	}
 
 private:
 
-	std::map<std::string, Ogre::Entity*> _entities;
+	std::map<std::string, Ogre::SceneNode*> _ogreObjects;
 	Ogre::Camera* _camera;
 	Ogre::SceneManager* _sceneMgr;
 	OgreBites::SdkCameraMan* _cameraMan;     // basic camera controller

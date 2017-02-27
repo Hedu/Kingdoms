@@ -27,10 +27,25 @@ Scene::Scene(Ogre::Root *mRoot, Ogre::RenderWindow* mWindow) {
 	_camera->setAspectRatio(
 			Ogre::Real(vp->getActualWidth())
 					/ Ogre::Real(vp->getActualHeight()));
+
+	_sceneMgr->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
 }
 
 Scene::~Scene() {
 	if (_cameraMan) {
 		delete _cameraMan;
 	}
+}
+
+void Scene::addMesh(std::string name,Vector3 position, std::string mesh) {
+	if (_ogreObjects.find(name) != _ogreObjects.end()) {
+		Ogre::SceneNode *oldOgreObject = _ogreObjects.at(name);
+		delete oldOgreObject;
+	}
+	Ogre::Entity* ogreEntity = _sceneMgr->createEntity(mesh);
+	Ogre::SceneNode* ogreNode = _sceneMgr->getRootSceneNode()->createChildSceneNode(
+		Ogre::Vector3(position._x, position._y, position._z));
+	ogreNode->attachObject(ogreEntity);
+
+	_ogreObjects[name] = ogreNode;
 }

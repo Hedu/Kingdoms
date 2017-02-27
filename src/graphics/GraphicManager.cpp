@@ -46,6 +46,12 @@ void GraphicManager::removeScene(std::string name) {
 	}
 }
 
+void GraphicManager::addMesh(std::string name, Vector3 position, std::string mesh) {
+	if (_activeScene != NULL) {
+		_activeScene->addMesh(name, position, mesh);
+	}
+}
+
 GraphicManager::~GraphicManager() {
 	if (!_scenes.empty()) {
 		std::map<std::string, Scene*>::iterator it = _scenes.begin();
