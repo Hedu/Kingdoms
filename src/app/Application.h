@@ -27,6 +27,15 @@ public:
 	virtual ~Application(void);
 
 	virtual void go(void);
+	virtual void init(void);
+
+	Ogre::Root * getRoot() {
+		return mRoot;
+	}
+
+	Ogre::RenderWindow* getWindow() {
+		return mWindow;
+	}
 
 protected:
 	virtual bool setup();

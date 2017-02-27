@@ -108,7 +108,7 @@ void Application::loadResources(void) {
 	Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
 }
 //-------------------------------------------------------------------------------------
-void Application::go(void) {
+void Application::init(void) {
 #ifdef _DEBUG
 	mResourcesCfg = "resources_d.cfg";
 	mPluginsCfg = "plugins_d.cfg";
@@ -119,9 +119,10 @@ void Application::go(void) {
 
 	if (!setup())
 		return;
-
+}
+//-------------------------------------------------------------------------------------
+void Application::go(void) {
 	mRoot->startRendering();
-
 }
 //-------------------------------------------------------------------------------------
 bool Application::setup(void) {
