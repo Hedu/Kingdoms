@@ -25,6 +25,7 @@ public:
 
 	virtual ~Entity();
 
+	void init();
 	void update(const float millis);
 
 	void addComponent(Component *);

@@ -21,6 +21,7 @@ class GameManager {
 public:
 	static GameManager *getInstance();
 	virtual ~GameManager();
+	void init();
 	void update(const float);
 	void addEntity(Entity *);
 	void removeEntity(Entity *);

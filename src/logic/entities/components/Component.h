@@ -17,7 +17,7 @@ typedef kingdoms::Message Message;
 class Component {
 public:
 	virtual ~Component();
-
+	virtual void init() = 0;
 	virtual void update(const float millis) = 0;
 	virtual void processMessage(const Message *) = 0;
 };

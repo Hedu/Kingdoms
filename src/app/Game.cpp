@@ -34,6 +34,7 @@ void realMain() {
 
 	gm->broadcastMessage(new Message(NULL));
 
+	gm->init();
 	while (true) {
 		diff = getCurrentMillis() - previousTime;
 		if (diff > MILLIS_PER_FRAME) {

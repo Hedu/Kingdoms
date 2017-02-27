@@ -16,6 +16,7 @@ class TestComponent: public Component {
 public:
 	TestComponent();
 	virtual ~TestComponent();
+	void init();
 	void update(const float millis);
 	virtual void processMessage(const Message *) {
 	}
