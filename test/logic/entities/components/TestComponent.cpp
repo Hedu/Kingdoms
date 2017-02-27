@@ -7,9 +7,7 @@
 
 #include "TestComponent.h"
 
-TestComponent::TestComponent() {
-	// TODO Auto-generated constructor stub
-
+TestComponent::TestComponent(Entity *e) : Component(e){
 }
 
 TestComponent::~TestComponent() {

@@ -7,6 +7,10 @@
 
 #include "Component.h"
 
+Component::Component(Entity* e): _self(e) {
+	// TODO Auto-generated destructor stub
+}
+
 Component::~Component() {
 	// TODO Auto-generated destructor stub
 }

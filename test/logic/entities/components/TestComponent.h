@@ -14,7 +14,7 @@
 
 class TestComponent: public Component {
 public:
-	TestComponent();
+	TestComponent(Entity *);
 	virtual ~TestComponent();
 	void init();
 	void update(const float millis);
