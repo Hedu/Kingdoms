@@ -9,12 +9,11 @@
 #define GRAPHICS_GRAPHICMANAGER_H_
 
 #include "../utils/Vector3.h"
+#include "Scene.h"
 
 #include <iostream>
 #include <map>
 #include <string>
-
-class Scene;
 
 class GraphicManager {
 public:
