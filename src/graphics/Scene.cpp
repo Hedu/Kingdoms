@@ -13,7 +13,7 @@ Scene::Scene(Ogre::Root *mRoot, Ogre::RenderWindow* mWindow) {
 	_camera = _sceneMgr->createCamera("PlayerCam");
 
 	// Position it at 500 in Z direction
-	_camera->setPosition(Ogre::Vector3(0, 0, 80));
+	_camera->setPosition(Ogre::Vector3(0, 120, 500));
 	// Look back along -Z
 	_camera->lookAt(Ogre::Vector3(0, 0, -300));
 	_camera->setNearClipDistance(5);

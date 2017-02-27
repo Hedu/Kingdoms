@@ -11,6 +11,7 @@
 #include "../logic/GameManager.h"
 #include "../logic/entities/Entity.h"
 #include "../logic/entities/components/GraphicComponent.h"
+#include "../utils/Vector3.h"
 #include "../../test/logic/entities/components/TestComponent.h"
 
 #include <ctime>
@@ -39,9 +40,15 @@ void realMain() {
 	Component *cp = new TestComponent(e);
 	Component *gcp = new GraphicComponent(e, "objeto1", "ninja.mesh");
 
+	Entity *e2 = new Entity(Vector3(100, 0, -10));
+	Component *gcp2 = new GraphicComponent(e2, "objeto2", "ogrehead.mesh");
+
 	e->addComponent(cp);
 	e->addComponent(gcp);
+	e2->addComponent(gcp2);
+
 	gm->addEntity(e);
+	gm->addEntity(e2);
 
 	gm->broadcastMessage(new Message(NULL));
 
